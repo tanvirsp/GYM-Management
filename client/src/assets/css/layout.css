@@ -1,0 +1,160 @@
+
+.top-bar {
+    background-color: rgba(255, 255, 255, 0.879);
+    padding: 10px 20px;
+    position: sticky;
+    margin-bottom: 20px;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.09);
+    z-index: 99;
+    border-radius: 7px;
+}
+  
+  .bar {
+    font-size: 22px;
+    margin-right: 20px;
+    cursor: pointer;
+  }
+  
+  .bar:hover {
+    color: red;
+  }
+  
+  .avater {
+    width: 54px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  
+  
+  .side-nav-open {
+    /* padding-top: 75px; */
+    height: 100%;
+    width: 300px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    transition: 0.3s;
+    background-color: #ffffff;
+    border-right: 1px solid rgba(0,0,0,.075);
+    scrollbar-color: #CCCCCC #F5F5F5;
+    scrollbar-width: thin;
+  }
+  
+  .side-nav-close {
+    /* padding-top: 75px; */
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    transition: 0.3s;
+    background-color: #ffffff;
+    border-right: 1px solid rgba(0,0,0,.075);
+    scrollbar-color: #CCCCCC #F5F5F5;
+    scrollbar-width: thin;
+  }
+  
+  
+  
+  
+.content {
+    transition: 0.3s;
+    padding: 20px;
+    margin-left: 300px;
+    /* margin-top: 75px; */
+   
+
+}
+
+.content-expand {
+    padding: 20px;
+    transition: 0.3s;
+    margin-left: 0; 
+  
+
+}
+
+
+
+
+
+
+/* ==================
+Navbar style
+=======================*/
+
+nav {
+    padding: 5px
+}
+
+nav a {
+    display: block;
+    padding: 12px 20px;
+    color: #212529;
+    transition: all 300ms;
+
+}
+
+nav a:hover {
+    /* background-color: #b4ffd33b; */
+    margin-left: 5px;
+    font-weight: 600 ;
+}
+
+
+
+.accordion-item {
+    border: none;
+
+}
+
+.accordion-button {
+    /* transition: all 300ms; */
+}
+
+.accordion-button:focus{
+    box-shadow: none;
+}
+
+.accordion-item:first-of-type>.accordion-header .accordion-button  {
+    border-radius: 0;
+    padding: 12px 20px
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #b4ffd33b;
+    border-left: 5px solid green;
+    box-shadow: none;
+    
+}
+
+
+
+.accordion-body {
+    background-color: #f7f7f7;
+}
+
+
+.sub-menu-icon svg {
+    font-size: 15px;
+    margin-right: 15px;
+    margin-bottom: 2px
+}
+
+
+.active-nav {
+    background-color: #b4ffd3ac;
+    border-left: 5px solid green;
+}
+
+.logo {
+    height: 120px
+}

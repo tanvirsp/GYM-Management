@@ -1,0 +1,220 @@
+/* =============================
+
+CSS INDEX
+---------------
+1. Google Fonts
+2. Common CSS
+3. Reusable Components
+4. Dashboard
+5. Registered Student
+6. Student Details
+7. Options CSS
+8. Login Form CSS
+9. Client Home Page CSS
+
+================================*/
+ 
+/* 1. Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
+/* ==================
+2. Common CSS
+====================*/
+
+:root {
+
+  --black: #1E201E;
+  --green: green;
+}
+
+
+
+* {
+  padding: 0 ;
+  margin: 0 ;
+  box-sizing: border-box;
+  font-family: "Roboto", serif;
+  font-weight: 400;
+  font-style: normal;
+  
+
+
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #f5f5f5;
+}
+
+
+ul {
+    padding: 0;
+    margin: 0
+}
+
+ul li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+
+h1,h2,h3,h4,h5,h6 {
+    font-weight: 600 ;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  h1 {
+    font-size: 47.78px !important;
+  }
+  
+  h2 {
+    font-size: 39.81px !important ;
+  }
+  
+  h3 {
+    font-size: 33.18px  !important;
+  }
+  
+  h4 {
+    font-size: 27.65px  !important;
+  }
+  
+  
+  h5 {
+    font-size: 23.04px !important ;
+   
+  }
+  
+  
+  h6 {
+    font-size: 19.2px ;
+  }
+  
+  p {
+    font-size: 16px;
+    color: #262626;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  small {
+    font-size: 13.33px;
+    color: #262626
+  }
+  
+
+  label {
+    font-weight: 600;
+  }
+
+
+  th {
+    font-weight: 600;
+  }
+
+  table, th, td {
+    /* color: rgb(94, 94, 94) !important; */
+    font-size: 14px;
+    padding: 18px 7px !important
+  }
+
+
+  .action-edit-button, 
+  .action-delete-button,
+  .action-view-button {
+    font-size: 16px;
+    padding: 7px;
+    margin: 2px 5px;
+    border-radius: 5px;
+  }
+
+  .action-edit-button {
+    background-color: rgb(71, 196, 115);
+    color: white
+  }
+
+  .action-delete-button {
+    background-color: rgb(247, 87, 119);
+    color: white
+  }
+
+  .action-view-button {
+    background-color: rgb(64, 203, 250);
+    color: white
+  }
+  
+  
+
+
+
+
+
+
+
+  .form-member-pic {
+    width: 180px;
+    border-radius: 15px;
+  }
+
+
+/* Member CSS */
+
+
+.search-form {
+  display: flex;
+  position: relative;
+  height: 40px
+}
+
+.search-form input {
+  padding-right: 50px;
+}
+
+.search-form button {
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  font-size: 22px;
+  position: absolute;
+  right: 10px;
+  top: 2px
+}
+
+
+.list-bar {
+  position: sticky;
+  top: 80px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.09);
+  z-index: 90;
+  background-color: rgba(255, 255, 255, 0.879);
+  padding: 20px 20px;
+  border-radius: 10px;
+}
+
+
+/* Pagination CSS */
+
+.page-item .page-link {
+  height: 41px;
+  width: 41px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: 0 8px,
+  
+}
+
+
+.page-item:first-child .page-link,
+.page-item:last-child .page-link {
+  border-radius: 50%;
+}

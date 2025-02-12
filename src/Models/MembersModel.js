@@ -2,17 +2,22 @@ const mongoose = require("mongoose");
 
 
 const dataSchema = mongoose.Schema( {
-    memberID: {type: String, required: true, unique: true},
+    imageUrl: {type: String},
     name: {type: String, required: true},
+    memberID: {type: String, required: true, },
     fatherName: {type: String, required: true},
     address: {type: String, required: true},
     contactNumber: {type: String, required: true},
-    package: {type: String, required: true},
-    imageUrl: {type: String},
+    packageID: {type: mongoose.Schema.Types.ObjectId, required: true},
+    trainerID: {type: mongoose.Schema.Types.ObjectId },
     status: {type: String, default: "1"},
-    expireDate: {type: Date},
-
-
+    expireDate: {type: Date, required: true},
+    services: [
+        {  
+            serviceID: {type: mongoose.Schema.Types.ObjectId },
+        }
+    ],
+   
 
 }, {timestamps: true, versionKey:false});
 
