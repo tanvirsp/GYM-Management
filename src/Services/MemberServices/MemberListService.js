@@ -5,21 +5,19 @@ const MemberListService= async (req, DataModel, SearchArray) => {
         const searchValue = req.params.searchKeyword;
         const skipRow = (pageNo - 1) * perPage;
 
+        
         let data;
         if (searchValue!=="0") {
 
             
             data = await DataModel.aggregate([
                 {$match: {$or: SearchArray}},
-                {$lookup: {from: "packages", localField: "packageID", foreignField: "_id", as: "package"} },
-                { $unwind: "$package" },
+                {$lookup: {from: "users", localField: "userID", foreignField: "_id", as: "profile"} },
                
-
-                
                 {
                     $facet:{
-                        Total:[{$count: "count"}],
-                        Rows:[{$skip: skipRow}, {$limit: perPage}],
+                        total:[{$count: "count"}],
+                        rows:[{$skip: skipRow}, {$limit: perPage}],
                     }
                 }
             ])
@@ -28,20 +26,19 @@ const MemberListService= async (req, DataModel, SearchArray) => {
         else {
 
             data = await DataModel.aggregate([
-                {$lookup: {from: "packages", localField: "packageID", foreignField: "_id", as: "package"} },
-                { $unwind: "$package" },
-
-                {$lookup: {from: "services", localField: "services.serviceID", foreignField: "_id", as: "serviceDetails" } },
+                {$lookup: {from: "users", localField: "userID", foreignField: "_id", as: "profile"} },
+                { $unwind : "$profile" },
                 
-                {$project: {services: 0, "serviceDetails.createdAt": 0, "serviceDetails.updatedAt": 0 , updatedAt: 0,  "package.createdAt": 0, "package.updatedAt": 0,}},
+                {$project: { services: 0, updatedAt: 0, packageID: 0, createdAt: 0, "profile._id": 0, 
+                                 "profile.password": 0,  "profile.loginStatus": 0,  "profile.updatedAt": 0, "profile.createdAt": 0,}},
 
 
 
                 
                 {
                     $facet:{
-                        Total:[{$count: "count"}],
-                        Rows:[{$skip: skipRow}, {$limit: perPage}],
+                        total:[{$count: "count"}],
+                        rows:[{$skip: skipRow}, {$limit: perPage}],
                     }
                 }
             ])

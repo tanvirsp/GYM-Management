@@ -15,6 +15,8 @@ const ExpenseTypeController = require("../Controllers/ExpenseTypeController.js")
 const ExpenseController = require("../Controllers/ExpenseController.js");
 const DueController = require("../Controllers/DueController.js");
 const PaymentController = require("../Controllers/PaymentController.js");
+const SalaryController = require("../Controllers/SalaryController.js");
+const DashboardController = require("../Controllers/DashboardController.js");
 
 
 
@@ -30,8 +32,7 @@ router.post("/file-upload", upload.single('image'),  async(req, res) =>{
 
 
 
-  
-
+ 
 
 
 
@@ -46,7 +47,7 @@ router.get("/send-otp/:email", UserController.SendOtp )
 router.get("/verify-otp/:email/:otp", UserController.VerifyOTP );
 router.post("/reset-password", UserController.ResetPassword );
 router.post("/change-password", AuthVerification, UserController.ChangePassword );
-router.get("/user-profile", AuthVerification,  UserController.Profile );
+router.get("/user-profile", AuthVerification, UserController.Profile );
 router.post("/update-profile", AuthVerification, UserController.ProfileUpdate );
 router.get("/users", AuthVerification, UserController.UserList );
 
@@ -73,9 +74,20 @@ router.delete('/service/:id', ServiceController.ServiceDelete )
 
 
 
+//Member API
+router.post('/member', MemberController.CreateMember )
+router.get('/member-list/:pageNo/:perPage/:searchKeyword', MemberController.MemberList)
+router.post('/member-update/:id', MemberController.MemberUpdate )
+router.get('/member/:id', MemberController.MemberDetailsByID )
+router.get('/member-payment-list/:pageNo/:perPage/:id', MemberController.MemberPaymentList)
+router.get('/member-due-list/:pageNo/:perPage/:id', MemberController.MemberDueList)
+
+
+
+
 
 //Trainer API
-router.post('/trainer', TrainerController.CreateTrainer )
+router.post('/create-trainer', TrainerController.CreateTrainer )
 router.get('/trainer-dropdown', TrainerController.TrainerDropdown )
 router.get('/trainer-list/:pageNo/:perPage/:searchKeyword', TrainerController.TrainerList )
 router.get('/trainer/:id', TrainerController.TrainerDetailsByID )
@@ -84,11 +96,14 @@ router.post('/trainer-update/:id', TrainerController.UpdateTrainer )
 
 
 
-//Member API
-router.post('/member', MemberController.CreateMember )
-router.get('/member-list/:pageNo/:perPage/:searchKeyword', MemberController.MemberList )
-router.post('/member/:id', MemberController.MemberUpdate )
-router.get('/member-update/:id', MemberController.MemberDetailsByID )
+//Salary API
+router.post('/create-salary', SalaryController.CreateSalary )
+router.post('/create-advance-salary', SalaryController.CreateAdvanceSalary )
+router.get('/salary-list/:pageNo/:perPage/:id', SalaryController.SalaryList )
+router.get('/advance-list/:pageNo/:perPage/:id', SalaryController.AdvanceList )
+
+
+
 
 
 //Expense Type API
@@ -98,6 +113,8 @@ router.get('/expense-type-list/:pageNo/:perPage/:searchKeyword', ExpenseTypeCont
 router.get('/expense-type/:id', ExpenseTypeController.ExpenseTypeDetails)
 router.post('/expense-type-update/:id', ExpenseTypeController.ExpenseTypeUpdate)
 
+
+
 //Expense  API
 router.post('/expense', ExpenseController.CreateExpense )
 router.get('/expense-list/:pageNo/:perPage/:searchKeyword', ExpenseController.ExpenseList )
@@ -106,7 +123,7 @@ router.post('/expense-update/:id', ExpenseController.ExpenseUpdate)
 
 
 
-//Due Payment  API
+//Due Payment Admin  API
 router.post('/due', DueController.CreateDue )
 router.get('/due-list/:pageNo/:perPage/:searchKeyword', DueController.DueList )
 router.get('/due/:id', DueController.DueByID)
@@ -114,11 +131,22 @@ router.post('/due-update/:id', DueController.DueUpdate)
 
 
 
-// Imcome API
+// Payment API 
 router.post('/payment', PaymentController.CreatePayment )
 router.get('/payment-list/:pageNo/:perPage/:searchKeyword', PaymentController.PaymentList )
 router.get('/payment-by-id/:id', PaymentController.PaymentByID)
 router.post('/payment-update/:id', PaymentController.PaymentUpdate)
+
+
+
+// Dashboard API 
+router.get('/total', DashboardController.Total );
+router.get('/monthlyReport/:year', DashboardController.MonthlyReport );
+
+
+
+
+
 
 
 

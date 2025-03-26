@@ -54,9 +54,9 @@ const CreateTrainer = () => {
         if(result.status ==="success"){
             toast.success("Trainer Created Successfully");
             
-            await TrainerListRequest(1, 20, 0)
-            e.target.reset();
-            navigate("/trainer-list")
+            // await TrainerListRequest(1, 20, 0)
+            // e.target.reset();
+            // navigate("/trainer-list")
 
         } else{
             toast.error("Something Went Wrong!!")
@@ -69,54 +69,64 @@ const CreateTrainer = () => {
         <div className=" p-5 bg-white rounded-3  ">
             <h4 className="mb-5">Add New Trainer</h4>
             <form onSubmit={handleSubmit}  > 
-                <div className="row">
-                    <div className="col-md-4">
-                        <label className="form-label ">Trainer ID</label>
-                        <input required onBlur = {(e)=>handleFormData("trainerID", e.target.value)}  className="form-control p-2" />
+            <fieldset className="border rounded-3 p-3">
+                    <legend className="float-none w-auto px-3" >Personal Information:</legend>
+                        <div className="row">
+                            <div className="col-md-3">
+                                <label className="form-label ">Member ID</label>
+                                <input required onBlur = {(e)=>handleFormData("memberID", e.target.value)}  className="form-control p-2" />
 
-                        <label className="form-label mt-3 ">Trainer Name</label>
-                        <input required onBlur = {(e)=>handleFormData("name", e.target.value)}  className="form-control p-2" />
+                                <label className="form-label mt-3 ">Name</label>
+                                <input required onBlur = {(e)=>handleFormData("name", e.target.value)}  className="form-control p-2" />
 
-                        <label className="form-label mt-3 ">Father Name</label>
-                        <input required onBlur = {(e)=>handleFormData("fatherName", e.target.value)}   className="form-control p-2" />
+                            </div>
+                            <div className="col-md-3">
+                                <label className="form-label ">Father Name</label>
+                                <input required onBlur = {(e)=>handleFormData("fatherName", e.target.value)}   className="form-control p-2" />
 
-                        
+                                <label className="form-label mt-3 ">Phone</label>
+                                <input required onBlur = {(e)=>handleFormData("phone", e.target.value)}   className="form-control p-2" />
 
-                        
-                    </div>
-                    <div className="col-md-4">
-                        <label className="form-label ">Phone</label>
-                        <input required onBlur = {(e)=>handleFormData("phone", e.target.value)}   className="form-control p-2" />
 
-                        <label className="form-label mt-3 ">Address</label>
-                        <input required onBlur = {(e)=>handleFormData("address", e.target.value)} className="form-control p-2" />
+                            </div>
+                            <div className="col-md-3">
+                                <label className="form-label ">Address</label>
+                                <input required onBlur = {(e)=>handleFormData("address", e.target.value)} className="form-control p-2" />
 
-                        <label className="form-label mt-3">Working Time</label>
-                        <select onChange={(e)=>handleFormData("workingTime", e.target.value)}   className="form-control  form-select" >
-                            <option value="0" >Select Working Time</option>
-                            <option value="7AM-1PM">7AM- 1PM</option>
-                            <option value="7PM-10PM">7PM -10PM</option>
-                        </select>
-                       
+                                <label className="form-label mt-3 ">Monthly Salary</label>
+                                <input required onBlur = {(e)=>handleFormData("monthlySalary", e.target.value)} className="form-control p-2" />
 
-                       
-                    </div>
-                    
-                    <div className="col-md-4">
-                        <label className="form-label">Profile Image</label>
-                        
-                            { ImageLoading && <LoadingSkeleton />}  
-                            {
-                            imageData?.imgUrl ? <div className="text-center"> <img className="form-member-pic" crossOrigin ="anonymous"  
-                                                        src={`${import.meta.env.VITE_URL}/${imageData.imgUrl}`} alt="Avatar" /> <br/>
-                                                        <button onClick={()=>setImageData("imgUrl", "") } className="btn btn-danger  mt-2">Remove</button>
-                                                </div> : 
-                                                <input onChange={handleImage} name='imgUrl' type="file" className='form-control'  /> 
-                            }
+                            </div>
+                            <div className="col-md-3">
+                                <label className="form-label ">Picture</label>
+                                
+                                    { ImageLoading && <LoadingSkeleton />}  
+                                    {
+                                    imageData?.imgUrl ? <div className="text-center"> <img className="form-member-pic" crossOrigin ="anonymous"  
+                                                                src={`${import.meta.env.VITE_URL}/${imageData.imgUrl}`} alt="Avatar" /> <br/>
+                                                                <button onClick={()=>setImageData("imgUrl", "") } className="btn btn-danger  mt-2">Remove</button>
+                                                        </div> : 
+                                                        <input onChange={handleImage} name='imgUrl' type="file" className='form-control'  /> 
+                                    }
 
-                    </div>
-                </div>
+                            </div>
+                        </div>
+                    </fieldset>
                 
+                    <fieldset className="border rounded-3 mt-3 p-3">
+                        <legend className="float-none w-auto px-3" >Login Information:</legend>
+                        <div className="row">
+                            <div className="col-md-3">
+                                <label className="form-label ">Email</label>
+                                <input required onBlur = {(e)=>handleFormData("email", e.target.value)}  className="form-control p-2" />
+                            </div>
+                            <div className="col-md-3">
+                                <label className="form-label ">Password</label>
+                                <input required onBlur = {(e)=>handleFormData("password", e.target.value)}  className="form-control p-2" />
+                            </div>
+                        </div>
+                    </fieldset>
+               
             
 
                 <input  className="btn btn-success mt-4" type="submit" value="Add A Trainer"/>

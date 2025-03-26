@@ -2,6 +2,7 @@ const UserCreateService =async(req, dataModel) =>{
     try {
         const reqBody = req.body;
         const userExit = await dataModel.find({email: reqBody.email});
+        reqBody.role = "admin"
         
         
         if(userExit.length > 0){

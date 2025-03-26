@@ -4,13 +4,8 @@ CSS INDEX
 ---------------
 1. Google Fonts
 2. Common CSS
-3. Reusable Components
-4. Dashboard
-5. Registered Student
-6. Student Details
-7. Options CSS
-8. Login Form CSS
-9. Client Home Page CSS
+3. Dashboard
+
 
 ================================*/
  
@@ -26,9 +21,16 @@ CSS INDEX
 :root {
 
   --black: #1E201E;
-  --green: green;
+  --color-primary: #35a849;
 }
 
+
+.common-bg-full {
+  background-color: white;
+  padding: 35px;
+  border-radius: 10px;
+  height: 100%
+}
 
 
 * {
@@ -50,6 +52,8 @@ body {
 }
 
 
+
+
 ul {
     padding: 0;
     margin: 0
@@ -67,8 +71,7 @@ a {
 
 h1,h2,h3,h4,h5,h6 {
     font-weight: 600 ;
-    padding: 0 !important;
-    margin: 0 !important;
+    color: #666666;
   }
   
   h1 {
@@ -99,10 +102,11 @@ h1,h2,h3,h4,h5,h6 {
   }
   
   p {
-    font-size: 16px;
-    color: #262626;
-    padding: 0 !important;
-    margin: 0 !important;
+    font-size: 15px;
+    color: #666666;
+    margin: 0;
+ 
+   
   }
   
   small {
@@ -123,7 +127,7 @@ h1,h2,h3,h4,h5,h6 {
   table, th, td {
     /* color: rgb(94, 94, 94) !important; */
     font-size: 14px;
-    padding: 18px 7px !important
+    padding: 15px 7px !important
   }
 
 
@@ -153,16 +157,23 @@ h1,h2,h3,h4,h5,h6 {
   
   
 
-
-
-
-
-
-
   .form-member-pic {
     width: 180px;
     border-radius: 15px;
   }
+
+  legend {
+    font-size: 18px;
+    /* font-weight: 700; */
+    color:rgb(0, 115, 255)
+  }
+
+
+/* ==================
+2. Common CSS
+====================*/
+
+
 
 
 /* Member CSS */
@@ -191,10 +202,10 @@ h1,h2,h3,h4,h5,h6 {
 .list-bar {
   position: sticky;
   top: 80px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.09);
+  /* backdrop-filter: blur(10px); */
+  /* box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.09); */
   z-index: 90;
-  background-color: rgba(255, 255, 255, 0.879);
+  background-color: rgba(255, 255, 255, 1);
   padding: 20px 20px;
   border-radius: 10px;
 }
@@ -217,4 +228,343 @@ h1,h2,h3,h4,h5,h6 {
 .page-item:first-child .page-link,
 .page-item:last-child .page-link {
   border-radius: 50%;
+}
+
+
+
+/* ==================
+3. Member Page CSS
+====================*/
+
+
+/* Active Card CSS */
+
+
+.show-card {
+  background-color: rgb(255, 255, 255);
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  border: 2px solid white;
+  box-shadow: 0 0 10px 2px rgba(95, 94, 94, 0.089);
+  transition: all 500ms;
+  margin: 15px 0
+  
+
+  
+}
+
+.show-card h6 {
+  text-transform: uppercase;
+  font-weight: 400;
+
+
+}
+
+
+.show-card h2 {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 50px !important;
+  margin: 10px 0px !important;
+  color: green;
+
+}
+
+.show-card h2 span {
+  font-size: 20px;
+}
+
+.show-card p {
+  font-size: 18px;
+}
+
+.show-card a {
+  padding: 5px 45px;
+  margin-top: 25px;
+  border: none;
+  background-color: #90C54D;
+  color: white !important;
+  transition: all 400ms;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+
+.show-card:hover {
+  border: 2px solid #90C54D;
+  box-shadow: none;
+  
+  
+}
+
+.show-card:hover.show-card a {
+  background-color: #5b9513;
+}
+
+
+
+/* Active Card CSS */
+
+.active-card {
+  background-color: #90C54D;
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  border: 2px solid #90C54D;
+  margin: 15px 0
+}
+
+.active-card h2, 
+.active-card p, 
+.active-card h6 {
+  color: white;
+}
+
+
+.active-card a {
+  color:#90C54D;
+  background-color: white;
+  padding: 5px 55px;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 25px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+
+.active-card h6 {
+  text-transform: uppercase;
+  font-weight: 400;
+
+}
+
+.active-card h2 {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 50px !important;
+  margin: 10px 0px !important;
+
+}
+.active-card h2 span {
+  font-size: 20px;
+}
+
+.active-card p {
+  font-size: 18px;
+}
+
+
+.total-col {
+  background-color: #ECEFF1 !important;
+}
+.discount-col {
+  background-color: #F0F4C3!important;
+}
+
+
+
+
+
+
+/* ==================
+5. Member Profile CSS
+====================*/
+
+.profile {
+  color: #666666;
+  text-align: center;
+
+}
+
+
+.profile img {
+  width: 200px;
+  border-radius: 50%;
+  box-shadow:  0 0 20px 5px rgb(222, 222, 222);;
+  border: 3px solid var(--color-primary)
+}
+
+.profile h4 {
+  color: var(--color-primary);
+  margin-top: 20px;
+  font-size: 30px !important;
+}
+
+.profile p {
+  margin-top: 10px;
+}
+
+.member-id {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+
+.contact-info {
+  padding: 20px;
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #f7f7f7;
+  display: flex;
+  justify-content: space-between;
+  text-align: start;
+  margin: 15px 0;
+}
+
+.contact-info p svg {
+  font-size: 25px;
+  color: var(--color-primary);
+  margin-right: 10px;
+}
+
+.address, .phone {
+  display: flex;
+  align-items: center;
+}
+
+.address {
+  width: 60%;
+}
+
+.phone {
+  width: 40%;
+}
+
+.address svg, .phone svg {
+  color: var(--color-primary);
+  margin-right: 15px;
+  font-size: 30px;
+  width: 25%
+  
+}
+
+.active-service,
+.expired-service,
+.hold-service
+ {
+  
+  color: white;
+  padding: 7px 15px;
+  margin: 0 5px;
+  border-radius: 25px;
+
+}
+
+.active-service {
+  background-color: var(--color-primary);
+}
+
+.expired-service {
+  background-color: rgb(226, 31, 31);
+}
+.hold-service {
+  background-color: rgb(236, 154, 13);
+}
+
+
+
+.date-info {
+  width: 60%
+}
+
+.action-info {
+  width: 40%;
+}
+
+.nav-tabs li button.active {
+  background-color: var(--color-primary) !important;
+  color: white !important;
+}
+
+
+.nav-tabs li button {
+  color: #666666 !important;
+}
+
+
+
+
+
+/* ==================
+8. Login Form CSS
+====================*/
+
+.form-section {
+  height: 100vh;
+  padding: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.form-container {
+  width: 500px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 75px 55px;
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+}
+
+
+.login-logo  {
+  text-align: center;
+  margin-bottom: 20px
+}
+
+.login-logo img {
+  width: 150px;
+  margin-bottom: 25px
+}
+
+.login-art {
+  width: 600px;
+}
+
+
+.password-field {
+  position: relative;
+}
+
+
+.password-icon {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.profile-image {
+  width: 250px;
+  border-radius: 20px;
+}
+
+
+
+
+/* ==================
+8. Dashboard CSS
+====================*/
+
+.d-card{
+  background-color: white;
+  padding: 35px;
+  border-radius: 10px;
+  /* border: 1px solid rgb(160, 240, 188) */
+}
+
+.d-title {
+  color:rgb(71, 196, 115)
+}
+
+.d-tag {
+  color: gray;
+  font-size: 12px;
+  margin-left: 5px
 }

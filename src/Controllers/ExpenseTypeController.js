@@ -18,7 +18,8 @@ exports.CreateExpenseType = async( req, res) =>{
 
 exports.ExpenseTypeDropdown = async( req, res) =>{
     const Projection = {updatedAt: 0, createdAt: 0, }
-    const result = await DropdownService(req, ExpenseTypesModel, Projection);
+    const MatchState = {$match: {}}
+    const result = await DropdownService(req, ExpenseTypesModel, Projection, MatchState);
 
     res.status(200).json(result)
 }

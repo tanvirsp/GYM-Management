@@ -1,20 +1,22 @@
 const TrainerModel = require("../Models/TrainerModel");
-const { CreateService } = require("../Services/CommonServices/CreateService");
-const { DetailsByIdService } = require("../Services/CommonServices/DetailsByIDService");
+const UserModel = require("../Models/UserModel");
 const { DropdownService } = require("../Services/CommonServices/DropdownService");
-const ListService = require("../Services/CommonServices/ListService");
-const { UpdateService } = require("../Services/CommonServices/UpdateService");
+const CreateTrainerService = require("../Services/TrainerServices/CreateTrainerService");
+const TrainerDetailsService = require("../Services/TrainerServices/TrainerDetailsService");
+const TrainerListService = require("../Services/TrainerServices/TrainerListService");
+const UpdateTrainerService = require("../Services/TrainerServices/UpdateTrainerService");
 
 exports.CreateTrainer = async( req, res) =>{
-    const result = await CreateService(req, TrainerModel);
+    const result = await CreateTrainerService(req);
 
     res.status(200).json(result)
 }
 
 
 exports.TrainerDropdown = async( req, res) =>{
-    const Projection = {updatedAt: 0, createdAt: 0, address: 0, status: 0, phone: 0, trainerID: 0, workingTime: 0, fatherName: 0 }
-    const result = await DropdownService(req, TrainerModel, Projection);
+    const Projection = {updatedAt: 0, createdAt: 0, address: 0, status: 0, phone: 0, trainerID: 0, workingTime: 0, fatherName: 0 };
+    const MatchState = {$match: {role: "trainer"}}
+    const result = await DropdownService(req, UserModel, Projection, MatchState);
 
     res.status(200).json(result)
 }
@@ -23,9 +25,8 @@ exports.TrainerDropdown = async( req, res) =>{
 
 
 exports.TrainerList = async( req, res) =>{
-    let SearchRgx = {"$regex": req.params.searchKeyword, "$options": "i"}
-    let SearchArray=[{name: SearchRgx}, {phone: SearchRgx} ]
-    const result = await ListService(req, TrainerModel, SearchArray );
+   
+    const result = await TrainerListService(req);
 
     res.status(200).json(result)
 }
@@ -34,7 +35,7 @@ exports.TrainerList = async( req, res) =>{
 
 
 exports.UpdateTrainer = async( req, res) =>{
-    const result = await UpdateService(req, TrainerModel);
+    const result = await UpdateTrainerService(req);
 
     res.status(200).json(result)
 }
@@ -42,7 +43,7 @@ exports.UpdateTrainer = async( req, res) =>{
 
 
 exports.TrainerDetailsByID = async( req, res) =>{
-    const result = await DetailsByIdService(req, TrainerModel);
+    const result = await TrainerDetailsService(req);
 
     res.status(200).json(result)
 }

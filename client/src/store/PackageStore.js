@@ -4,17 +4,42 @@ import axios from 'axios';
 const PackageStore = create( (set) =>({
 
     PackageLoading: false,
-    PackageList: [],
+    PackageList: null,
     PackageTotal: 0,
     PackageFormData: null,
+    PackageDropdown: null,
+
+
+    PackageDropdownRequest:  async()=>{
+        set({PackageDropdown: null, PackageLoading: true, });
+        const res = await axios.get(`/api/v1/package-dropdown`);
+        if(res.data.status === "success"){
+            set({PackageDropdown: res.data.data, PackageLoading: false, })
+        }
+
+    },
+
 
 
     PackageListRequest: async(pageNumber, perPage, searchKeyword )=>{
         set({PackageLoading: true, PackageList: null })
         
-        const res = await axios.get(`/api/v1/package-list/${pageNumber}/${perPage}/${searchKeyword}`);
-        if(res.data.status === "success"){
-            set({PackageList: res.data.data[0].rows, PackageLoading: false, PackageTotal: res.data.data[0].total[0].count })
+        try {
+            const res = await axios.get(`/api/v1/package-list/${pageNumber}/${perPage}/${searchKeyword}`);
+            if(res.data.status === "success"){
+                const rows = res.data.data[0]?.rows || [];
+                const total = res.data.data[0]?.total[0]?.count || 0;
+
+                set({PackageList: rows, PackageLoading: false, PackageTotal: total })
+                
+            } else{
+                // Ensure empty state when no data is found
+                set({ PackageList: [], PackageTotal: 0, PackageLoading: false });
+            }
+
+        } catch (error) {
+            console.error("Error fetching service list:", error);
+            set({ PackageList: [], PackageTotal: 0, PackageLoading: false });
         }
     },
 
@@ -55,8 +80,9 @@ const PackageStore = create( (set) =>({
             set({PackageFormData: res.data.data[0], PackageLoading: false, })
         }
 
-    }
+    },
 
+  
 
 }));
 

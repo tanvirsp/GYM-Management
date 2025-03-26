@@ -4,17 +4,41 @@ import axios from 'axios';
 const ServiceStore = create( (set) =>({
 
     ServiceLoading: false,
-    ServiceList: [],
+    ServiceList: null,
     ServiceTotal: 0,
     ServiceFormData: null,
+    ServiceDropdown: null,
+
+
+    ServiceDropdownRequest:  async()=>{
+        set({PackageDropdown: null, PackageLoading: true, });
+        const res = await axios.get(`/api/v1/service-dropdown`);
+        if(res.data.status === "success"){
+            set({ServiceDropdown: res.data.data, ServiceLoading: false, })
+        }
+
+    },
 
 
     ServiceListRequest: async(pageNumber, perPage, searchKeyword )=>{
-        set({ServiceLoading: true, ServiceList: null })
+        set({ServiceLoading: true, ServiceList: null,  ServiceTotal: 0, })
         
-        const res = await axios.get(`/api/v1/service-list/${pageNumber}/${perPage}/${searchKeyword}`);
-        if(res.data.status === "success"){
-            set({ServiceList: res.data.data[0].rows, ServiceLoading: false, ServiceTotal: res.data.data[0].total[0].count })
+        try {
+            const res = await axios.get(`/api/v1/service-list/${pageNumber}/${perPage}/${searchKeyword}`);
+            if(res.data.status === "success"){
+                const rows = res.data.data[0]?.rows || [];
+                const total = res.data.data[0]?.total[0]?.count || 0;
+
+                set({ServiceList: rows, ServiceLoading: false, ServiceTotal: total })
+                
+            } else{
+                // Ensure empty state when no data is found
+                set({ ServiceList: [], ServiceTotal: 0, ServiceLoading: false });
+            }
+
+        } catch (error) {
+            console.error("Error fetching service list:", error);
+            set({ ServiceList: [], ServiceTotal: 0, ServiceLoading: false });
         }
     },
 

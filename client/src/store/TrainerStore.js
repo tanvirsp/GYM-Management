@@ -4,18 +4,33 @@ import axios from 'axios';
 const TrainerStore = create( (set) =>({
 
     TrainerLoading: false,
-    TrainerList: [],
+    TrainerList: null,
     TrainerTotal: 0,
     TrainerFormData: null,
+    TrainerDropdown: null,
 
 
     TrainerListRequest: async(pageNumber, perPage, searchKeyword )=>{
         set({TrainerLoading: true, TrainerList: null })
         
-        const res = await axios.get(`/api/v1/Trainer-list/${pageNumber}/${perPage}/${searchKeyword}`);
-        if(res.data.status === "success"){
-            set({TrainerList: res.data.data[0].rows, TrainerLoading: false, TrainerTotal: res.data.data[0].total[0].count })
+        try {
+            const res = await axios.get(`/api/v1/trainer-list/${pageNumber}/${perPage}/${searchKeyword}`);
+            if(res.data.status === "success"){
+                const rows = res.data.data[0]?.rows || [];
+                const total = res.data.data[0]?.total[0]?.count || 0;
+
+                set({TrainerList: rows, TrainerLoading: false, TrainerTotal: total })
+                
+            } else{
+                // Ensure empty state when no data is found
+                set({ TrainerList: [], TrainerTotal: 0, TrainerLoading: false });
+            }
+
+        } catch (error) {
+            console.error("Error fetching service list:", error);
+            set({ TrainerList: [], TrainerTotal: 0, TrainerLoading: false });
         }
+
     },
 
 
@@ -29,9 +44,8 @@ const TrainerStore = create( (set) =>({
     },
 
 
-
     CreateTrainerRequest: async(data) =>{
-        const res = await axios.post(`/api/v1/trainer`, data);
+        const res = await axios.post(`/api/v1/create-trainer`, data);
         return res["data"];
     },
 
@@ -55,6 +69,18 @@ const TrainerStore = create( (set) =>({
             set({TrainerFormData: res.data.data[0], TrainerLoading: false, })
         }
 
+    },
+
+    TrainerDropdownRequest: async() =>{
+        set({TrainerDropdown: null, TrainerLoading: true, })
+        const res = await axios.get(`/api/v1/trainer-dropdown`, );
+        if(res.data.status === "success"){
+            set({TrainerDropdown: res.data.data, TrainerLoading: false, })
+        }
+    },
+
+    ResetTrainerData: async() =>{
+        set({TrainerFormData: null})
     }
 
 

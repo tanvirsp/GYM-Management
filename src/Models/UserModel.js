@@ -14,12 +14,13 @@ const userSchema = mongoose.Schema( {
           ],
     },
     password: {type: String, required: true, trim: true },
-    mobile: { type: String, },
-    role: { type: String, enum: ["admin", "trainer"], required: true},
-    image:{type: String},
-    status:{type: Boolean, default: true },
+    role: { type: String, enum: ["admin", "trainer", "member"], required: true},
+    imgUrl:{type: String},
+    loginStatus:{type: Boolean, default: true },
     address:{type: String },
-    district:{type: String },
+    fatherName:{type: String },
+    phone:{type: String },
+    memberID:{type: String, required: true },
   
 
 }, {timestamps: true, versionKey:false});

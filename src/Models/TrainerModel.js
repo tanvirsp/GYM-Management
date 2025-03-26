@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 
 const dataSchema = mongoose.Schema( {
-    trainerID: {type: String, required: true, unique: true},
+    gymID: {type: String, required: true, unique: true},
     name: {type: String, required: true},
     fatherName: {type: String, required: true},
     phone: {type: String, required: true},

@@ -23,7 +23,7 @@ const UpdateTrainer = () => {
         })()
     } ,[id])
 
-    console.log(TrainerFormData);
+    
 
 
 
@@ -55,7 +55,7 @@ const UpdateTrainer = () => {
             
             await TrainerListRequest(1, 20, 0)
             e.target.reset();
-            navigate("/service-list")
+            navigate("/trainer-list")
 
         } else{
             toast.error("Something Went Wrong!!")
@@ -71,7 +71,7 @@ const UpdateTrainer = () => {
                 <div className="row">
                     <div className="col-md-4">
                         <label className="form-label ">Trainer ID</label>
-                        <input required onBlur = {(e)=>OnChangTrainerFormData("trainerID", e.target.value)} defaultValue={TrainerFormData.trainerID}  className="form-control p-2" />
+                        <input required onBlur = {(e)=>OnChangTrainerFormData("gymID", e.target.value)} defaultValue={TrainerFormData.gymID}  className="form-control p-2" />
 
                         <label className="form-label mt-3 ">Trainer Name</label>
                         <input required onBlur = {(e)=>OnChangTrainerFormData("name", e.target.value)} defaultValue={TrainerFormData.name}  className="form-control p-2" />
@@ -96,6 +96,9 @@ const UpdateTrainer = () => {
                             <option value="7AM-1PM">7AM- 1PM</option>
                             <option value="7PM-10PM">7PM -10PM</option>
                         </select>
+
+                        <label className="form-label mt-3 ">Salary</label>
+                        <input required onBlur = {(e)=>OnChangTrainerFormData("salary", e.target.value)} defaultValue={TrainerFormData.salaryDetails.monthlySalary} className="form-control p-2" />
                        
 
                        

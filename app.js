@@ -35,22 +35,23 @@ app.use(express.static('uploads'));
 
 
 
+
 // Routing Implement
 app.use("/api/v1", route )
 
-
 //Front End Router Define
-// app.get('*', function (req, res){
-//     res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'))
-// })
+app.use(express.static('client/dist'));
+app.get('*', function (req, res){
+    res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'))
+})
 
 
 
 
 //Root Rought
-app.get("/", (req, res) =>{
-    res.send("GYM Server is running")
-})
+// app.get("/", (req, res) =>{
+//     res.send("GYM Server is running")
+// })
 
 
 //Undefined Route

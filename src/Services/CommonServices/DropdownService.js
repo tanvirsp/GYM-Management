@@ -1,11 +1,10 @@
-exports.DropdownService = async(req, DataModel, Projection) =>{
+exports.DropdownService = async(req, DataModel, Projection, MatchState) =>{
 
     try {
         
         const data = await DataModel.aggregate([
-            {
-                $project: Projection
-            }
+            MatchState,
+            { $project: Projection }
         ])
         
         return {status:"success", data: data};

@@ -1,3 +1,3 @@
 Package Note:
-    1. New Package created by local state and Upate maintain by Global state
-    2. 
+   
+    1. Cron job package is used to update Member status date when GYM Member's expire date is over. It's change status "1" to "0"

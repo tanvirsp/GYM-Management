@@ -23,8 +23,6 @@ const ServiceList = () => {
     const [searchKeyword,setSearchKeyword]=useState("0");
     
 
-    
-
 
     useEffect(()=>{
         (async()=>{
@@ -113,7 +111,7 @@ const ServiceList = () => {
         <section className=" list-bar">
             <div className="row">
                 <div className="col-md-4">
-                    <h5>Total Package: {ServiceTotal}</h5>
+                    <h5>Total Service: {ServiceTotal}</h5>
                 </div>
                 <div className="col-2">
                     <input onKeyUp={textSearch} placeholder="Text Filter" className="form-control"/>

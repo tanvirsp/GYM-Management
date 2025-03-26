@@ -23,7 +23,7 @@ const UpdateService = () => {
         })()
     } ,[id])
 
-    console.log(ServiceFormData);
+
 
 
 

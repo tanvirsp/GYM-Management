@@ -135,11 +135,12 @@ const PackageList = () => {
             </div>
         </section>
 
-        <section className="bg-white p-3 rounded-3 mt-3 ">
+        <section className="bg-white p-3 rounded-3 mt-3 table-responsive ">
             <Table striped  className="align-middle" >
                 <thead >
                     <tr >
                         <th className="text-center">Sl</th>
+                        <th>Thumbnail</th>
                         <th>Package Name</th>
                         <th>Price</th>
                         <th>Duration</th>
@@ -148,12 +149,16 @@ const PackageList = () => {
                 </thead>
                 <tbody>
                     {
-                        PackageList === null ? <TableSkeleton colSpan="4" /> : 
-                        PackageList.length === 0 ? <tr><td  colSpan = "4"> <Empty title={"Package"} /> </td></tr> : 
+                        PackageList === null ? <TableSkeleton colSpan="6" /> : 
+                        PackageList.length === 0 ? <tr><td  colSpan = "6"> <Empty title={"Package"} /> </td></tr> : 
                         PackageList.map( (item, index) =>{
                             return (
                                 <tr key={index}>
                                     <td className="text-center"> { ((pageNumber - 1) * perPage) + (index+1)}</td>
+                                    <td> 
+                                        <img width="70px" crossOrigin ="anonymous"  
+                                                        src={`${import.meta.env.VITE_URL}/${item.imgUrl}`} alt="Avatar" />
+                                    </td>
                                     <td >{item.name}</td>
                                     <td>{item.price}</td>
                                     <td>{item.duration}</td>

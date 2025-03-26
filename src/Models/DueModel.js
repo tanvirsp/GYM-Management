@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const dataSchema = mongoose.Schema({
-    memberID: {type: mongoose.Schema.Types.ObjectId, required: true},
+    userID: {type: mongoose.Schema.Types.ObjectId, required: true},
     amount:{type:Number},
     status:{type:String, default: 'due'},
     note:{type:String},

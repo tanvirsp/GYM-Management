@@ -12,6 +12,8 @@
     box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.09);
     z-index: 99;
     border-radius: 7px;
+    
+
 }
   
   .bar {
@@ -31,6 +33,13 @@
   }
   
   
+  .top-right-text{
+    margin-right: 20px
+  }
+  .top-right-text h6 {
+    margin-bottom: 0;
+  }
+
   
   .side-nav-open {
     /* padding-top: 75px; */
@@ -69,8 +78,8 @@
     transition: 0.3s;
     padding: 20px;
     margin-left: 300px;
-    /* margin-top: 75px; */
-   
+
+
 
 }
 
@@ -81,6 +90,7 @@
   
 
 }
+
 
 
 

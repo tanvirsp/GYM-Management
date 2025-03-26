@@ -1,14 +1,14 @@
 
 const PaymentModel = require("../Models/PaymentModel");
-const { CreateService } = require("../Services/CommonServices/CreateService");
 const { DetailsByIdService } = require("../Services/CommonServices/DetailsByIDService");
 const ListService = require("../Services/CommonServices/ListService");
 const { UpdateService } = require("../Services/CommonServices/UpdateService");
+const CreatePaymentService = require("../Services/PaymentServices/CreatePaymentService");
 
 
 
 exports.CreatePayment = async( req, res) =>{
-    const result = await CreateService(req, PaymentModel);
+    const result = await CreatePaymentService(req);
 
     res.status(200).json(result)
 }
@@ -40,3 +40,5 @@ exports.PaymentUpdate = async( req, res) =>{
 
     res.status(200).json(result)
 }
+
+

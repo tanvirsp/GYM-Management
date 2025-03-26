@@ -20,7 +20,6 @@ exports.CreateDue = async( req, res) =>{
 exports.DueList = async( req, res) =>{
     let SearchRgx = {"$regex": req.params.searchKeyword, "$options": "i"};
     let SearchArray=[{note: SearchRgx}, {status: SearchRgx}]
-    console.log(SearchArray);
     const result = await ListService(req, DueModel, SearchArray );
 
     res.status(200).json(result)
