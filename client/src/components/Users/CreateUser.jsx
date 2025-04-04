@@ -43,8 +43,12 @@ const CreateUser = () => {
         <div className=" p-5 bg-white rounded-3 border">
           <h5 className="mb-5 text-center">Create New Admin User</h5>
              <form onSubmit={handleSubmit(onSubmit)}>
+
+                <label className="form-label">Member ID</label>
+                <input className="form-control" {...register("memberID", { required: true })} />
+                {errors.memberID && <span className="error-message">This field is required</span>}
                
-                <label className="form-label">Name</label>
+                <label className="form-label mt-4">Name</label>
                 <input className="form-control" {...register("name", { required: true })} />
                 {errors.name && <span className="error-message">This field is required</span>}
 

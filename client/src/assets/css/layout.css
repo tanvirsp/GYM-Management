@@ -21,6 +21,14 @@
     margin-right: 20px;
     cursor: pointer;
   }
+
+
+  .mobile-bar {
+    font-size: 22px;
+    margin-right: 20px;
+    cursor: pointer;
+    display: none;
+  }
   
   .bar:hover {
     color: red;

@@ -1,12 +1,13 @@
 import { Table } from "react-bootstrap";
 import UserStore from "../../store/UserStore";
-import RowSkeleton from '../../skeletons/RowSkeleton';
+
 import Empty from "../Empty";
 import { useEffect } from "react";
 import avater from "../../assets/images/avater.jpg"
 import { Link } from "react-router-dom";
 import { GrView } from "react-icons/gr";
 import { MdOutlineDeleteForever } from "react-icons/md";
+import TableSkeleton from "../../skeletons/TableSkeleton";
 
 
 
@@ -48,8 +49,8 @@ const UserList = () => {
             </thead>
             <tbody >
             {
-                    UserList === null ? <RowSkeleton /> :
-                    UserList?.length === 0 ? <tr> <td  colSpan = "6"> <Empty title ={"User"} />  </td></tr> :
+                    UserList === null ? <TableSkeleton colSpan="8" /> :
+                    UserList?.length === 0 ? <tr> <td  colSpan = "8"> <Empty title ={"User"} />  </td></tr> :
                     UserList.map( (item, index) => {
                         return ( 
                             <tr key={index}>

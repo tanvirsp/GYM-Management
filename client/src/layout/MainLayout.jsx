@@ -12,6 +12,8 @@ import { useEffect } from 'react';
 import { Dropdown } from 'bootstrap';
 import NavItems from './NavItems';
 import UserStore from '../store/UserStore';
+import MobileMenu from './MobileMenu';
+import DesktopMenu from './DesktopMenu';
 
 
 
@@ -22,10 +24,16 @@ const MainLayout = () => {
     const {Profile, ProfileRequest, LogoutRequest} = UserStore();
     const navigate = useNavigate()
 
-    console.log(Profile);
-
+    
     const [showSideBar, setShowSideBar] = useState(true);
     const toggleSidebar = ()=>setShowSideBar(!showSideBar);
+
+    //Mobile Menu State
+    const [showMobileMenu, setShowMobileMenu] = useState(false);
+    const toggleMobileMenu = ()=>setShowMobileMenu(!showMobileMenu);
+    
+
+    
 
     useEffect(()=>{
         (async()=>{
@@ -52,14 +60,17 @@ const MainLayout = () => {
     return (
         <>
             <section>
-                <nav className={showSideBar ? "side-nav-open ": "side-nav-close "}>
-                    <NavItems setShowSideBar={setShowSideBar} />
-                </nav>
+                <div className={showSideBar ? "side-nav-open ": "side-nav-close "}>
+                    <DesktopMenu setShowSideBar={setShowSideBar} />
+                    <MobileMenu showMobileMenu={showMobileMenu} toggleMobileMenu={toggleMobileMenu} />
+                    
+                </div>
 
                 <div className={showSideBar ? "content ": "content-expand "}>
                     <div className='top-bar'>
                         <div>
                             <FaBarsStaggered onClick={toggleSidebar} className='bar' />
+                            <FaBarsStaggered onClick={toggleMobileMenu} className='mobile-bar' />
                         </div>
                         {
                             Profile === null ? <p>Loading...</p>: 

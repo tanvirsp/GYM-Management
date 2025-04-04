@@ -9,6 +9,7 @@ import { GrView } from "react-icons/gr";
 import { IoSearchOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { AiOutlineEdit } from "react-icons/ai";
+import TableSkeleton from "../../skeletons/TableSkeleton";
 
 
 const MemberList = () => {
@@ -108,8 +109,8 @@ const MemberList = () => {
                     </thead>
                     <tbody>
                     {
-                        MemberList === null ? <ColumnSkeleton colSpan="7"  /> :
-                        MemberList.length === 0 ? <tr> <td  colSpan = "7"> <Empty title ={"member"} />  </td></tr>: 
+                        MemberList === null ? <TableSkeleton colSpan="8" /> :
+                        MemberList.length === 0 ? <tr> <td  colSpan = "8"> <Empty title ={"member"} />  </td></tr>: 
                         MemberList.map( (item, index) =>{
                             return(
                                     <tr key={index}>
