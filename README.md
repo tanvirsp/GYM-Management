@@ -2,6 +2,8 @@
 
 This is a complete GYM Management system using by MERN stack. A Gym owner can easily maintance monthly payment from gym member and make report with payment history from member and trainer. Also can track due and advance payment for member and trainer.
 
+## Live Link: http://gym.ajkerjamalpur.com
+
 
 
 ---
@@ -45,4 +47,3 @@ This is a complete GYM Management system using by MERN stack. A Gym owner can ea
 ├── package.json
 └── README.md
 
-## Live Link: http://gym.ajkerjamalpur.com
