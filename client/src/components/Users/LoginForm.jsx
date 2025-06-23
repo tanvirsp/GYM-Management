@@ -40,8 +40,6 @@ const LoginForm = () => {
         }else {
             toast.error(result.message);
         }
-       
-
     };
 
 
@@ -71,6 +69,28 @@ const LoginForm = () => {
                     }
                 </form>
                 <p className='mt-2'> <Link to="/reset-form">Forget password?</Link> </p>
+                <hr />
+                <div className=' bg-white p-3 rounded'>
+                    <h6 className='text-center'>Login Access:</h6>
+                    <div>
+                        <p>Admin Email: admin@xyz.com</p>
+                        <p>Password: admin</p>
+                    </div>
+                    <hr />
+                
+                
+                    <div  >
+                        <p>Trainer Email: trainer@xyz.com</p>
+                        <p>Password: trainer</p>
+                    </div>
+                    <hr />
+                    <div >
+                        <p>Member Email: member@xyz.com</p>
+                        <p>Password: member</p>
+                    </div>
+                </div>
+               
+               
                 
             </div>
         </section>

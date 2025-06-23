@@ -28,23 +28,16 @@ const DashboardPage = () => {
     {
         Profile.role==="admin"? 
         <section>
-        <GroupCard />
-        <div className="row mt-4">
-            <div className="col-md-8">
-                    <EarningGraphChart />
+            <GroupCard />
+            <div className="row mt-4">
+                <div className="col">
+                        <EarningGraphChart />
+                </div> 
             </div>
-            <div className="col-md-4">
-                <div className='bg-white rounded-3 p-5'>
-                    <UsersChart />
-                    <p className="text-center">Users</p>
-                </div>
-            </div>
-        </div>
-    </section> :
-    Profile.role==="trainer" ? 
-        <TrainerDashboard />:
-        <MemberDashboard />
-           
+        </section> :
+        Profile.role==="trainer" ? 
+            <TrainerDashboard /> :
+            <MemberDashboard />   
     }
 
 

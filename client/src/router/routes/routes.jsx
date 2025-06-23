@@ -29,6 +29,9 @@ import ProfilePage from "../../pages/UserPage/ProfilePage";
 import UserCreatePage from "../../pages/UserPage/UserCreatePage";
 import UserListPage from "../../pages/UserPage/UserListPage";
 import DashboardPage from "../../pages/DashboardPage";
+import IncomeReportPage from "../../pages/ReportPage/IncomeReportPage";
+import ExpenseReportPage from "../../pages/ReportPage/ExpenseReportPage";
+import DueReportPage from "../../pages/ReportPage/DueReportPage";
 
 
 
@@ -137,6 +140,18 @@ const router = createBrowserRouter([
             {
                 path: "/user-list",
                 element:  <UserListPage/>
+            },
+            {
+                path: "/income-report",
+                element:  <IncomeReportPage/>
+            },
+            {
+                path: "/expense-report",
+                element:  <ExpenseReportPage/>
+            },
+            {
+                path: "/due-report",
+                element:  <DueReportPage/>
             }
                       
         ]

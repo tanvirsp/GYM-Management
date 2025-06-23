@@ -18,6 +18,7 @@ const DueController = require("../Controllers/DueController.js");
 const PaymentController = require("../Controllers/PaymentController.js");
 const SalaryController = require("../Controllers/SalaryController.js");
 const DashboardController = require("../Controllers/DashboardController.js");
+const ReportController = require("../Controllers/ReportController");
 
 
 
@@ -143,6 +144,14 @@ router.post('/payment-update/:id',  AuthVerification, VerifyAdmin, PaymentContro
 // Dashboard API 
 router.get('/total',  AuthVerification, VerifyAdmin, DashboardController.Total );
 router.get('/monthlyReport/:year',  AuthVerification, VerifyAdmin, DashboardController.MonthlyReport );
+
+
+
+
+//Report
+router.post('/incomeReport', ReportController.IncomeReport );
+router.post('/expenseReport', ReportController.ExpenseReport );
+router.post('/dueReport', ReportController.DueReport );
 
 
 

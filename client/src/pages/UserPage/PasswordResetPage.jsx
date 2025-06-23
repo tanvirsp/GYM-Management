@@ -1,11 +1,10 @@
 
 import ResetForm from '../../components/Users/ResetForm';
-import bgImg from "../../assets/images/login-bg.png";
 
 
 const PasswordResetPage = () => {
     return (
-        <section style={{backgroundImage: `url(${bgImg})`}} >
+        <section className="login-section"  >
              <ResetForm />
         </section>
       

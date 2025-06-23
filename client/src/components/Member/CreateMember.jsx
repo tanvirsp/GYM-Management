@@ -117,7 +117,7 @@ const CreateMember = () => {
    
     const result = await CreateMemberRequest(allData);
         if(result.status ==="success"){
-            toast.success("Package Created Successfully");
+            toast.success("New Member Created Successfully");
             
             await MemberListRequest(1, 20, 0)
             e.target.reset();
